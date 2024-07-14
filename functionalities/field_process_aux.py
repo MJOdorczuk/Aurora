@@ -12,8 +12,8 @@ def smooth(df, axis, n, field):
     '''
     ys = df["Structured Coordinates:1"]
     zs = df["Structured Coordinates:2"]
-    ny = ys[ys > 0].first_valid_index()
-    nz = zs[zs > 0].first_valid_index()
+    ny = ys[ys > ys.min()].first_valid_index()
+    nz = zs[zs > zs.min()].first_valid_index()
     nd2p = df[field].to_numpy().reshape(-1, nz // ny, ny)
     if axis == 0:
         window = (1, 1, n)
