@@ -109,7 +109,6 @@ for timestep in timesteps:
     Ma_ion2.append(Ma2)
 
     plotCones(data, edge1, edge2, c1, m1, c2, m2, Ma1, Ma2, timestep, 'ion density')
-    plotMach(Ma1, Ma2, 'ion density')
 
     edge1, edge2, data = getEdges(ele, 20, np.arange(0.9, 0.99, 0.01), 1, 60, 140)
     Ma1, c1, m1 = getMach(edge1)
@@ -119,4 +118,5 @@ for timestep in timesteps:
 
 
     plotCones(data, edge1, edge2, c1, m1, c2, m2, Ma1, Ma2, timestep, 'electron density')
-    plotMach(Ma1, Ma2, 'electron density')
+plotMach(Ma_ion1, Ma_ion2, 'ion density')
+plotMach(Ma_ele1, Ma_ele2, 'electron density')
