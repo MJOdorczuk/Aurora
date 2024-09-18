@@ -21,12 +21,18 @@ def slice(data, axis, index):
     elif axis == 2:
         return data[:, :, index:index+1]
 
+def slice_and_smooth(data, axis, index, n):
+    begin = index - n // 2
+    indices = list(range(begin, begin + n))
+    slices = [slice(data, axis, i) for i in indices]
+    return sum(slices) / n
+
 def average_slice(file):
     with h5py.File(file, 'r') as f:
         label = list(f.keys())[0]
         data = f[label]
         data_av = time_average(data, 20)
-        data_av = slice(data_av, 0, data_av.shape[0] // 2)
+        data_av = slice_and_smooth(data_av, 0, data_av.shape[0] // 2, 11)
         return data_av, label
 
 def save_slice(data, label, file):
