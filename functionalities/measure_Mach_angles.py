@@ -1,5 +1,5 @@
 # To run the script, use the following command:
-# python <path_to_the_script>/measure_Mach_angles.py <path_to_simulaiton_directory>
+# python <path_to_the_script>/measure_Mach_angles.py <path_to_simulation_directory>
 # The script will generate plots in the 'plots' directory in the current folder
 
 import h5py
